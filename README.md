@@ -61,7 +61,7 @@ init(_) ->
 	{ok, 'INIT', #state{}}.
 
 'INIT'({_, Socket}, _Ref, State) ->
-	{reply, ok, 'HANDSHAKE', State#state{socket = Socket}}.
+	{reply, ok, 'RECV', State#state{socket = Socket}}.
 
 'RECV'({_, Socket, Buf}, _Ref, State = #state{socket = Socket}) ->
 	gen_tcp:send(Socket, Buf),
