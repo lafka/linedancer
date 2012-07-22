@@ -1,0 +1,19 @@
+{application, handshake,
+	[
+		{description, "A simple echo that requires a key"},
+		{vsn, "1.0.0"},
+		{modules, [handshake]},
+		{registered, []},
+		{applications,
+			[
+		    	kernel,
+				stdlib
+			]
+		},
+		{mod, { handshake, []}},
+		{env, [
+			{port, 7000},
+			{protocol_handler, handshake_fsm}
+		]}
+	]
+}.

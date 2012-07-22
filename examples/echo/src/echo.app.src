@@ -1,0 +1,19 @@
+{application, echo,
+	[
+		{description, "A simple echo server based on linedancer"},
+		{vsn, "1.0.0"},
+		{modules, [echo]},
+		{registered, []},
+		{applications,
+			[
+		    	kernel,
+				stdlib
+			]
+		},
+		{mod, { echo, []}},
+		{env, [
+			{port, 7000},
+			{protocol_handler, echo_fsm}
+		]}
+	]
+}.
