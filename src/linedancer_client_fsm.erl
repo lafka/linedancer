@@ -36,9 +36,10 @@ init([ProtocolFSM]) ->
 'WAIT_FOR_SOCKET'({socket_ready, Socket}, State = #state{fsm = FSM, fsmnext = ExpectedEvent}) when is_port(Socket) ->
 	inet:setopts(Socket, [{active, once}, {packet, raw}, binary]),
 	{ok, {IP, _Port}} = inet:peername(Socket),
-	NewState          = State#state{socket=Socket, addr=IP},
 	ProtoState        = gen_fsm:sync_send_event(FSM, {ExpectedEvent, Socket}),
-	{next_state, 'WAIT_FOR_DATA', NewState#state{fsmnext = ProtoState}};
+	{next_state, 'WAIT_FOR_DATA', State#state{fsmnext = ProtoState,
+	                                          socket  = Socket,
+	                                          addr    = IP}};
 
 'WAIT_FOR_SOCKET'(Other, State) ->
 	error_logger:error_msg("State: 'WAIT_FOR_DATA'. Unexpected msg: ~p~n", [Other]),
