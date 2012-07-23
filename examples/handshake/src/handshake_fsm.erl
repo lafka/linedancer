@@ -50,7 +50,7 @@ init([]) ->
 
 'RECV'({_, Socket, Buf}, _Ref, State = #state{key = Key, socket = Socket}) ->
 	gen_tcp:send(Socket, [<<"client[", Key/binary, "] -> ">>, Buf]),
-    {reply, ok, 'RECV', State}.
+	{reply, ok, 'RECV', State}.
 
 handle_info(_,  StateName, State) -> {next_state, StateName, State}.
 handle_event(_, StateName, State) -> {next_state, StateName, State}.
