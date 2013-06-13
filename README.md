@@ -1,10 +1,12 @@
 linedancer
 ==========
 
+**This was an early experiment with Erlang/OTP, for something more production ready you should checkout [extend/ranch](https://github.com/extend/ranch).**
+
 A protocol agnostic tcp/ip gateway that runs in the upper layer of the OSI stack
 
 ## Introduction
-Linedancer is a little framework for creating non-blocking TCP/IP servers based
+Linedancer is a little framework for creating non-blocking TCP/IP servelrs based
 roughly based on the writings of Serge Aleynikov (http://www.trapexit.org/Building_a_Non-blocking_TCP_server_using_OTP_principles).
 
 The server is just a library which you can include in your application, in it's
